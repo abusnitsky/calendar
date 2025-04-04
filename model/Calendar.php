@@ -23,12 +23,7 @@ class Calendar
         $this->currentDay = date('d', strtotime($date));
     }
 
-    public function setCurrentMonthFromPicker($pickerMonth)
-    {
-        $yearAndMonth = explode('-', $pickerMonth);
-         $this->currentYear= (int)$yearAndMonth[0];
-         $this->currentMonth= (int)$yearAndMonth[1];
-    }
+
 
     public function setNextMonth()
     {
