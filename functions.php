@@ -5,10 +5,16 @@ function getCurrentDate()
     return date('Y-m-d');
 }
 
+function getCurrentYearMonth()
+{
+    return date('Y-m');
+}
+
 function getCurrentYear()
 {
     return date('Y');
 }
+
 function getCurrentMonth()
 {
     return date('m');
