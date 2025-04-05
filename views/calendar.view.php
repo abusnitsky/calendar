@@ -1,11 +1,16 @@
 <div name="calendar-container"
     class="flex flex-col items-center justify-center h-screen bg-gray-100">
     <div name="calendar-header">
-        <form method="GET" action="">
-        <button class="border" type="submit" name="Prev" value="1">Prev</button>
-        <input type="month" name="Date" value="<?= $currentDateYm ?>" />
-        <button class="border" type="submit" name="Next" value="1">Next</button>
+        <form method="GET" id="monthForm" action="">
+            <button class="border" type="submit" name="Prev" value="1">Prev</button>
+            <input type="month" name="Date" id="monthpicker" value="<?= $currentDateYm ?>" />
+            <button class="border" type="submit" name="Next" value="1">Next</button>
         </form>
+        <script>
+            document.getElementById('monthpicker').addEventListener('change', function() {
+                document.getElementById('monthForm').submit();
+            });
+        </script>
     </div>
     <div name="calendar-body">
         <div name="day-names"
