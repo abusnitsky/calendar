@@ -1,6 +1,8 @@
 <?php
 
-class Calendar
+include_once 'config/Database.php';
+
+class Calendar extends db
 {
     public $currentDate;
     public $currentDateYm;
