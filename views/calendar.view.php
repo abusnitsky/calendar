@@ -1,4 +1,4 @@
-<div name="calendar-container"
+<div name="calendar-container" id="calendar-view"
     class="flex flex-col items-center justify-center h-screen bg-gray-100">
     <div name="calendar-header">
         <form method="GET" id="monthForm" action="">
@@ -32,16 +32,39 @@
                 echo '<div class="h-16"></div>';
             }
             ?>
-            
+
             <?php foreach ($daysInMonth as $day): ?>
                 <div
-                    data-date="<?= $day['date'] ?>"
+                    data-date="<?= $currentDateYm . "-" . $day ?>"
                     data-action="calendar-day"
                     class="h-16 border border-gray-300 flex items-center justify-center">
-                    <?= $day['day'] ?>
+                    <?= $day ?>
                 </div>
             <?php endforeach; ?>
-
         </div>
     </div>
+    <script>
+        document.querySelectorAll('[data-action="calendar-day"]').forEach(day => {
+            day.addEventListener('click', function() {
+                const date = this.dataset.date;
+
+                fetch('?route=day&date=' + date)
+                    .then(res => res.text())
+                    .then(html => {
+                        document.getElementById('calendar-view').classList.add('hidden');
+                        const dayView = document.getElementById('day-view');
+                        dayView.innerHTML = html;
+                        dayView.classList.remove('hidden');
+                    });
+            });
+        });
+
+        document.addEventListener('click', function(e) {
+            if (e.target.matches('[data-action="back-to-calendar"]')) {
+                document.getElementById('day-view').classList.add('hidden');
+                document.getElementById('calendar-view').classList.remove('hidden');
+            }
+        });
+    </script>
 </div>
+<div id="day-view" class="hidden"></div>
