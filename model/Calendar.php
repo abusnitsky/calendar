@@ -42,7 +42,16 @@ class Calendar
 
     public function getDaysInMonth()
     {
-        return cal_days_in_month(CAL_GREGORIAN, $this->currentMonth, $this->currentYear);
+        $daysInMonth = cal_days_in_month(CAL_GREGORIAN, $this->currentMonth, $this->currentYear);
+
+        for ($i = 1; $i <= $daysInMonth; $i++) {
+            $daysInMonthArray[] = [
+                'day' => $i,
+                'date' => sprintf('%07d-%02d', $this->currentDateYm, $i),
+            ];
+        }
+
+        return $daysInMonthArray;
     }
 
     public function getFirstDateOfMonth()
@@ -54,6 +63,4 @@ class Calendar
     {
         return (date('w', strtotime("$this->currentYear-$this->currentMonth-01")) + 6) % 7;
     }
-
-
 }

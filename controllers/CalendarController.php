@@ -10,25 +10,18 @@ class CalendarController
         list($year, $month) = explode('-', $currentDateYm);
         $calendar = new Calendar($year, $month);
 
-
         if (isset($_GET['Prev'])) {
             $calendar->setPreviousMonth();
         } elseif (isset($_GET['Next'])) {
             $calendar->setNextMonth();
-        } elseif (isset($_GET['Date'])) {
-            $calendar->setCurrentDate($_GET['Date']);
-        }
+        } 
 
         $currentDateYm = $calendar->currentDateYm;
         $daysInMonth = $calendar->getDaysInMonth();
         $firstDayOfWeek = $calendar->getFirstDayOfWeek();
 
-
         require 'views/header.view.php';
         require 'views/calendar.view.php';
         require 'views/footer.view.php';
     }
-
-
-
 }

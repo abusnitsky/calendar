@@ -31,12 +31,16 @@
             for ($i = 0; $i < $firstDayOfWeek; $i++) {
                 echo '<div class="h-16"></div>';
             }
-
-            // Fill in the days of the month
-            for ($day = 1; $day <= $daysInMonth; $day++) {
-                echo "<div class='h-16 border border-gray-300 flex items-center justify-center'>$day</div>";
-            }
             ?>
+            
+            <?php foreach ($daysInMonth as $day): ?>
+                <div
+                    data-date="<?= $day['date'] ?>"
+                    data-action="calendar-day"
+                    class="h-16 border border-gray-300 flex items-center justify-center">
+                    <?= $day['day'] ?>
+                </div>
+            <?php endforeach; ?>
 
         </div>
     </div>
