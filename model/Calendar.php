@@ -3,6 +3,7 @@
 class Calendar
 {
     public $currentDate;
+    public $currentDateYm;
     public $currentYear;
     public $currentMonth;
     public $currentDay;
@@ -10,6 +11,7 @@ class Calendar
     public function __construct()
     {
         $this->currentDate = date('Y-m-d');
+        $this->currentDateYm = date('Y-m');
         $this->currentYear = date('Y');
         $this->currentMonth = date('m');
         $this->currentDay = date('d');
@@ -22,8 +24,6 @@ class Calendar
         $this->currentMonth = date('m', strtotime($date));
         $this->currentDay = date('d', strtotime($date));
     }
-
-
 
     public function setNextMonth()
     {

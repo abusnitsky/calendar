@@ -1,4 +1,5 @@
 <?php
-require 'views/header.view.php';
-require 'views/calendar.view.php';
-require 'views/footer.view.php';
+require_once 'controllers/CalendarController.php';
+
+$controller = new CalendarController();
+$controller->handle();

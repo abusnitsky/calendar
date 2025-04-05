@@ -2,7 +2,7 @@
     class="flex flex-col items-center justify-center h-screen bg-gray-100">
     <div name="calendar-header">
         <button>Prev</button>
-        <input type="month" value="<?php echo getCurrentYearMonth(); ?>" />
+        <input type="month" value="<?= $currentDateYm ?>" />
         <button>Next</button>
     </div>
     <div name="calendar-body">
@@ -21,12 +21,12 @@
             <?php
 
             // Fill in the empty days before the first day of the month
-            for ($i = 0; $i < getFirstDayOfWeek(getCurrentMonth(), getCurrentYear()); $i++) {
+            for ($i = 0; $i < $firstDayOfWeek; $i++) {
                 echo '<div class="h-16"></div>';
             }
 
             // Fill in the days of the month
-            for ($day = 1; $day <= getDaysInMonth(getCurrentMonth(), getCurrentYear()); $day++) {
+            for ($day = 1; $day <= $daysInMonth; $day++) {
                 echo "<div class='h-16 border border-gray-300 flex items-center justify-center'>$day</div>";
             }
             ?>
