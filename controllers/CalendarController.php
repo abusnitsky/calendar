@@ -5,10 +5,24 @@ class CalendarController
 {
     public function handle()
     {
-        $calendar = new Calendar();
+        $currentDateYm = isset($_GET['Date']) ? $_GET['Date'] : date('Y-m');
+
+        list($year, $month) = explode('-', $currentDateYm);
+        $calendar = new Calendar($year, $month);
+
+
+        if (isset($_GET['Prev'])) {
+            $calendar->setPreviousMonth();
+        } elseif (isset($_GET['Next'])) {
+            $calendar->setNextMonth();
+        } elseif (isset($_GET['Date'])) {
+            $calendar->setCurrentDate($_GET['Date']);
+        }
+
         $currentDateYm = $calendar->currentDateYm;
         $daysInMonth = $calendar->getDaysInMonth();
         $firstDayOfWeek = $calendar->getFirstDayOfWeek();
+
 
         require 'views/header.view.php';
         require 'views/calendar.view.php';

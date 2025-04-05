@@ -8,18 +8,19 @@ class Calendar
     public $currentMonth;
     public $currentDay;
 
-    public function __construct()
+    public function __construct($year = null, $month = null)
     {
-        $this->currentDate = date('Y-m-d');
-        $this->currentDateYm = date('Y-m');
-        $this->currentYear = date('Y');
-        $this->currentMonth = date('m');
-        $this->currentDay = date('d');
+        if ($year && $month) {
+            $this->setCurrentDate("$year-$month-1");
+        } else {
+            $this->setCurrentDate(date('Y-m-d'));
+        }
     }
 
     public function setCurrentDate($date)
     {
         $this->currentDate = $date;
+        $this->currentDateYm = date('Y-m', strtotime($date));
         $this->currentYear = date('Y', strtotime($date));
         $this->currentMonth = date('m', strtotime($date));
         $this->currentDay = date('d', strtotime($date));

@@ -1,9 +1,11 @@
 <div name="calendar-container"
     class="flex flex-col items-center justify-center h-screen bg-gray-100">
     <div name="calendar-header">
-        <button>Prev</button>
-        <input type="month" value="<?= $currentDateYm ?>" />
-        <button>Next</button>
+        <form method="GET" action="">
+        <button class="border" type="submit" name="Prev" value="1">Prev</button>
+        <input type="month" name="Date" value="<?= $currentDateYm ?>" />
+        <button class="border" type="submit" name="Next" value="1">Next</button>
+        </form>
     </div>
     <div name="calendar-body">
         <div name="day-names"
