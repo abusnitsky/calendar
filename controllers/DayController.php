@@ -1,13 +1,22 @@
 <?php
 
-class DayController {
-    public function handle(string $date): string {
+require_once 'helpers/view.php';
+
+class DayController
+{
+    public function handle(string $date): string
+    {
 
         $currentDate = $date;
 
-        // Include view and capture output
-        ob_start();
-        include 'views/day.view.php';
-        return ob_get_clean();
+        return $this->showDay($currentDate);
+    }
+
+    public function showDay(string $date): string
+    {
+
+        return renderView('views/day.view.php', [
+            'currentDate' => $date,
+        ]);
     }
 }
