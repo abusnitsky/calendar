@@ -6,7 +6,6 @@ class DayController
 {
     public function handle(string $date): string
     {
-
         $currentDate = $date;
 
         return $this->showDay($currentDate);
@@ -14,9 +13,10 @@ class DayController
 
     public function showDay(string $date): string
     {
-
-        return renderView('views/day.view.php', [
-            'currentDate' => $date,
+        $content = renderView('day', [
+            'currentDate' => $date
         ]);
+
+        return renderView('layout', ['content' => $content]);
     }
 }

@@ -1,8 +1,12 @@
 <?php
 
-function renderView(string $viewFile, array $data = []): string {
-    extract($data); 
+function renderView(string $view, array $data = []): string
+{
+    extract($data);
+
     ob_start();
-    include $viewFile;
+
+    require __DIR__ . '/../views/' . $view . '.view.php';
+
     return ob_get_clean();
 }
