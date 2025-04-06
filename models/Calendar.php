@@ -1,6 +1,6 @@
 <?php
 
-include_once 'config/Database.php';
+include_once __DIR__ . '/../core/Database.php';
 
 class Calendar extends db
 {
@@ -26,7 +26,7 @@ class Calendar extends db
         } elseif ($format === 'd') {
             return date('d', strtotime($this->currentDate));
         }
-        
+
         return $this->currentDate;  // Default format is 'Y-m-d'
     }
 
