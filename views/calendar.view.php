@@ -6,11 +6,7 @@
             <input type="month" name="Date" id="monthpicker" value="<?= $currentDateYm ?>" />
             <button class="border" type="submit" name="Next" value="1">Next</button>
         </form>
-        <script>
-            document.getElementById('monthpicker').addEventListener('change', function() {
-                document.getElementById('monthForm').submit();
-            });
-        </script>
+
     </div>
     <div name="calendar-body">
         <div name="day-names"
@@ -43,28 +39,7 @@
             <?php endforeach; ?>
         </div>
     </div>
-    <script>
-        document.querySelectorAll('[data-action="calendar-day"]').forEach(day => {
-            day.addEventListener('click', function() {
-                const date = this.dataset.date;
 
-                fetch('?route=day&date=' + date)
-                    .then(res => res.text())
-                    .then(html => {
-                        document.getElementById('calendar-view').classList.add('hidden');
-                        const dayView = document.getElementById('day-view');
-                        dayView.innerHTML = html;
-                        dayView.classList.remove('hidden');
-                    });
-            });
-        });
-
-        document.addEventListener('click', function(e) {
-            if (e.target.matches('[data-action="back-to-calendar"]')) {
-                document.getElementById('day-view').classList.add('hidden');
-                document.getElementById('calendar-view').classList.remove('hidden');
-            }
-        });
-    </script>
 </div>
 <div id="day-view" class="hidden"></div>
+<script src="views/js/calendar.js"></script>
