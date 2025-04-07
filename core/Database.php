@@ -26,4 +26,11 @@ class db
         $stmt->execute($params);
         return $stmt->fetchAll();
     }
+
+    protected function execute(string $sql, array $params = []): int
+{
+    $stmt = $this->pdo->prepare($sql);
+    $stmt->execute($params);
+    return $stmt->rowCount(); 
+}
 }
