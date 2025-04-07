@@ -1,8 +1,6 @@
 <?php
 
-include_once __DIR__ . '/../core/Database.php';
-
-class Calendar extends db
+class Calendar
 {
     private string $currentDate;
 
